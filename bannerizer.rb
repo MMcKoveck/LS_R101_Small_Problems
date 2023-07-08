@@ -59,5 +59,5 @@ if it will be too wide to fit inside a standard terminal window
 
   if input > 76 make input2
     max length?
-    center new line?
+    center new line?     'hello'.center(10) #=> "  hello   "    input2.center(input)
     if > 76, divide by 2 and make 2 shorter lines or just add leftovers to new?
