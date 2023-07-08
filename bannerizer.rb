@@ -49,3 +49,15 @@ puts "+-#{dashes}-+"
 end
 =end
 # NOPE! GOTTA ESTABLISH THEM FIRST!
+=begin
+FURTHER EXPLORATION
+Modify this method so it will truncate the message 
+if it will be too wide to fit inside a standard terminal window 
+  (80 columns, including the sides of the box). 
+  For a real challenge, try word wrapping very long messages 
+  so they appear on multiple lines, but still within a box.
+
+  if input > 76 make input2
+    max length?
+    center new line?
+    if > 76, divide by 2 and make 2 shorter lines or just add leftovers to new?
