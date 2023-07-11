@@ -14,10 +14,11 @@ Enter an adjective: blue
 Enter an adverb: quickly
 
 Do you walk your blue dog quickly? That's' hilarious!
-gets.chomps x 4
+gets.chomp x 4
 interpolate 4 variables into story
 =end
 
+=begin FIRST ANSWER
 puts "Enter a noun: "
 noun = gets.chomp
 puts "Enter a verb: "
@@ -28,7 +29,7 @@ puts "Enter an adverb: "
 adverb = gets.chomp
 puts ""
 puts "Do you #{verb} your #{adjective} #{noun} #{adverb}? That's hilarious!"
-#=end
+=end # FIRST ANSWER
 =begin THEIR CODE
   
 print 'Enter a noun: '
@@ -71,4 +72,95 @@ The different madlib sentences are written within our Ruby file.
  would be to read in a text file. 
  Then, we could use Kernel#format to interpolate our 
  noun, verb, adjective, and adverb into this file.
+=end
+# THIS IS A REWRITE WITH GREETING, INPUT CHECK, AND 3 OUTCOMES
+# WATCH FOR VARIABLE SCOPE!
+#=begin REWRITE
+noun = ''
+verb = ''
+adjective = ''
+adverb = ''
+puts "Choose Your Fortune!"
+loop do
+  puts "Enter a noun: "
+  noun = gets.chomp
+    break if noun.length != 0
+end
+
+loop do
+  puts "Enter a verb: "
+  verb = gets.chomp
+    break if verb.length != 0
+end
+
+loop do
+  puts "Enter an adjective: "
+  adjective = gets.chomp
+    break if adjective.length != 0
+end
+
+loop do
+  puts "Enter an adverb: "
+  adverb = gets.chomp
+    break if adverb.length != 0
+end
+
+
+madlibs = []
+madlib1 = "Do you #{verb} your #{adjective} #{noun} #{adverb}? That's hilarious!"
+madlibs << madlib1
+madlib2 = "Your #{adjective} #{noun} will #{verb} #{adverb}."
+madlibs << madlib2
+madlib3 = "Don't #{verb} your #{adjective} #{noun} without #{adverb} looking ahead."
+madlibs << madlib3
+puts ""
+puts madlibs.sample
+#=end # REWRITE
+
+=begin
+maybe instead of 4 loops to check 
+one loop with 4 (if variable != 0 next)s
+=end
+=begin I DON'T LIKE THIS. TOO KLUDGY AND BUGGY
+noun = ''
+verb = ''
+adjective = ''
+adverb = ''
+puts "Choose Your Fortune!"
+loop do
+  if noun.length == 0
+  puts "Enter a noun: "
+  noun = gets.chomp
+    next if noun.length != 0
+  end
+
+  if verb.length == 0
+  puts "Enter a verb: "
+  verb = gets.chomp
+    break if verb.length != 0
+  end
+
+  if adjective.length == 0
+  puts "Enter an adjective: "
+  adjective = gets.chomp
+    break if adjective.length != 0
+  end
+
+  if adverb.length == 0
+  puts "Enter an adverb: "
+  adverb = gets.chomp
+    break if adverb.length != 0
+  end
+end
+
+
+madlibs = []
+madlib1 = "Do you #{verb} your #{adjective} #{noun} #{adverb}? That's hilarious!"
+madlibs << madlib1
+madlib2 = "Your #{adjective} #{noun} will #{verb} #{adverb}."
+madlibs << madlib2
+madlib3 = "Don't #{verb} your #{adjective} #{noun} without #{adverb} looking ahead."
+madlibs << madlib3
+puts ""
+puts madlibs.sample
 =end
