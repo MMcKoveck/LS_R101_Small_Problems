@@ -89,7 +89,7 @@ puts "+-#{dashes}-+"
 puts "| #{spaces} |"
 puts "| #{input[0, 76]} |" # if input.size < 76 #always print upto 76
 puts "| #{input[76, 76].center(76)} |" if input.size > 76 #exist only if > 76   center?
-puts "| #{input[152, 76].center(76)} |" if input.size > 154
+puts "| #{input[152, 76].center(76)} |" if input.size > 152
 puts "| #{spaces} |"
 puts "+-#{dashes}-+"
 end
