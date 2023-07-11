@@ -67,3 +67,14 @@ Further Exploration
 Modify this program to ask for the input measurements in feet, 
 and display the results in square feet, square inches, and square centimeters.
 =end # FURTHER EXPLORATION
+puts "Enter the length of the room in feet: "
+length = gets.chomp.to_f
+puts "Enter the width of the room in feet: "
+width = gets.chomp.to_f
+areaSF = length * width
+areaSI = areaSF * 12
+areaCM = areaSF * 929.03
+puts "The area of the room is :"
+puts "#{areaSF.round(2)} square feet," 
+puts "#{areaSI.round(2)} square inches,"
+puts "and #{areaCM.round(2)} square cm."
