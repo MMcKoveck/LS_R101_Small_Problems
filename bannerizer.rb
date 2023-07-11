@@ -13,6 +13,7 @@ end
 input.each {|char| dashes << '-'}
 NOPE
 =end
+=begin MY CODE
 def print_in_box(input)
 dashes = ''
 spaces = ''
@@ -20,12 +21,14 @@ input.each_char {|char| dashes << '-'}
 input.each_char {|char| spaces << ' '}
 puts "+-#{dashes}-+"
 puts "| #{spaces} |"
-puts "| #{input} |"
+puts "| #{input} |" 
 puts "| #{spaces} |"
 puts "+-#{dashes}-+"
 end
+=end
 
 # BEGIN THEIR CODE
+=begin
 def print_in_box(message)
    horizontal_rule = "+#{'-' * (message.size + 2)}+"
    empty_line = "|#{' ' * (message.size + 2)}|"
@@ -36,6 +39,7 @@ def print_in_box(message)
    puts empty_line
    puts horizontal_rule
 end
+=end
 # WHAT IF I ASSIGNED dashes AND spaces WITH THE BLOCK LINES?
 =begin
 def print_in_box(input)
@@ -61,3 +65,36 @@ if it will be too wide to fit inside a standard terminal window
     max length?
     center new line?     'hello'.center(10) #=> "  hello   "    input2.center(input)
     if > 76, divide by 2 and make 2 shorter lines or just add leftovers to new?
+
+=end
+=begin NEW PEDAC
+if input < 76 print 1 line
+if input > 76 add second line
+input[0-76]
+input[77-154]
+need a size limiter
+=end #NEW PEDAC
+def print_in_box(input)
+dashes = ''
+spaces = ''
+input.each_char do |char| 
+  dashes << '-'
+  break if dashes.size == 76
+end
+input.each_char do |char| 
+  spaces << ' '
+  break if spaces.size == 76
+end
+puts "+-#{dashes}-+"
+puts "| #{spaces} |"
+puts "| #{input[0, 76]} |" # if input.size < 76 #always print upto 76
+puts "| #{input[76, 76].center(76)} |" if input.size > 76 #exist only if > 76   center?
+puts "| #{input[152, 76].center(76)} |" if input.size > 154
+puts "| #{spaces} |"
+puts "+-#{dashes}-+"
+end
+puts "Enter some text: "
+input = gets.chomp
+print_in_box(input)
+
+#puts "| #{input.max.size(76)} |" if input.size < 76 #always print upto 76
