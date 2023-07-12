@@ -74,6 +74,26 @@ totals << "0" if totals[-2] == "."
 
 puts "The tip is #{tips}"
 puts "The total is #{totals}"
-
+#=end # FE CODE
 #bills = bill.to_s
 #bills << "0" if bills[-2] == "." 
+# BILLS ARE IRRELEVANT HERE
+=begin FE 2
+sprintf INFO
+f/F are precision specifiers
+the precision is the number of digits after the decimal point to be written
+sprintf('%.2f', 3.14159)  # => "3.14"
+sprintf('%.10f', 3.14159) # => "3.1415900000"
+=end
+
+puts "What is the bill?"
+bill = gets.chomp.to_f
+puts "What is the tip percentage?"
+tip_percent = gets.chomp.to_f
+tip = (bill * (tip_percent * 0.01)).round(2) # MAYBE PUT .round(2) here instead?
+total = (tip + bill).round(2)
+
+puts "The tip is #{sprintf("%.2f", tip)}"
+puts "The total is #{sprintf("%.2f", total)}"
+
+#=end # FE 2
