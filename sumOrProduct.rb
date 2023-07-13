@@ -26,6 +26,9 @@ if s add all elements
 if p multiply all elements
   output specific response
 
+range.each {|x| b += x} (b must == 0)
+range.each {|x| b *= x} (b must == 1)
+
   check for negatives or zero?
   floats?
   appropriate direction?
@@ -50,5 +53,58 @@ else
   puts "Try Again"
 end
 
-# range.each {|x| b += x} (b must == 0)
-# range.each {|x| b *= x} (b must == 1)
+#=begin THEIR CODE
+def compute_sum(number)
+  total = 0
+  1.upto(number) { |value| total += value }
+  total
+end
+
+def compute_product(number)
+  total = 1
+  1.upto(number) { |value| total *= value }
+  total
+end
+
+puts ">> Please enter an integer greater than 0"
+number = gets.chomp.to_i
+
+puts ">> Enter 's' to compute the sum, 'p' to compute the product."
+operation = gets.chomp
+
+if operation == 's'
+  sum = compute_sum(number)
+  puts "The sum of the integers between 1 and #{number} is #{sum}."
+elsif operation == 'p'
+  product = compute_product(number)
+  puts "The product of the integers between 1 and #{number} is #{product}."
+else
+  puts "Oops. Unknown operation."
+end
+#=end #THEIR CODE
+=begin
+Discussion
+
+For brevity and simplicity, our solution doesn't try too hard to validate the user input.
+ Your own solution probably should try to validate input 
+ and issue error messages as needed.
+
+This solution first obtains the integer and operation to be performed from the user, 
+then we perform the requested operation using one of two methods: 
+compute_sum adds the numbers together, while compute_product multiplies them. 
+Once we have the result, we just print it.
+
+Further Exploration
+
+The compute_sum and compute_product methods are simple and should be familiar. 
+A more rubyish way of computing sums and products is with the Enumerable#inject method.
+ #inject is a very useful method, but if you've never used it before, 
+ it can be difficult to understand.
+
+Take some time to read the documentation for #inject. 
+(Note that all Enumerable methods can be used on Array.) 
+Try to explain how it works to yourself.
+
+Try to use #inject in your solution to this problem.
+=end
+#=begin FE
