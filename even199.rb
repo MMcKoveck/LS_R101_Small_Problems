@@ -21,3 +21,5 @@ end
 a = []                                 #Create Array
 1.upto(99) {|i| a << i}                #Fill Array with 1..99
 a.select {|x| puts x if x % 2 == 0}    #Array#select
+
+(1..99).each {|x| puts x if x.even?}
