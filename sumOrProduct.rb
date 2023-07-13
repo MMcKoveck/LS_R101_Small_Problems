@@ -53,7 +53,7 @@ else
   puts "Try Again"
 end
 
-#=begin THEIR CODE
+=begin THEIR CODE
 def compute_sum(number)
   total = 0
   1.upto(number) { |value| total += value }
@@ -108,3 +108,27 @@ Try to explain how it works to yourself.
 Try to use #inject in your solution to this problem.
 =end
 #=begin FE
+num = 0
+loop do
+  puts ">> Please enter an integer greater than 0:"
+  num = gets.chomp.to_i
+  break if num > 0
+end
+range = (1..num)
+loop do
+  puts ">> Enter 's' to compute the sum, 'p' to compute the product."
+  input = gets.chomp.downcase
+  if input == 's' 
+    sum = (1..num).inject(:+)
+    puts "The sum of the integers between 1 and #{num} is #{sum}."
+    break
+  elsif input == 'p' 
+    product = (1..num).inject(:*)
+    puts "The product of the integers between 1 and #{num} is #{product}."
+    break
+  else 
+    puts "S & P is the choice for me."
+    puts "(r/unexpectedletterkenny)"
+    puts "Try Again with 'S' or 'P'."
+  end
+end
