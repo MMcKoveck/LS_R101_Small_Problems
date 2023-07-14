@@ -32,3 +32,33 @@ p negative(-3) == -3
 p negative(0) == 0 
 # Now it's not printing, but returning trues. 
 # This is more in line with the actual question.
+
+=begin THEIR CODE
+def negative(number)
+  number > 0 ? -number : number
+end
+
+Oooo! I like this Ternary!
+apparently you can just modify the object!
+
+Further Exploration
+
+There is an even shorter way to write this but it isn't' as immediately intuitive.
+
+def negative(number)
+  -number.abs # returns modified object's absolute value
+end
+
+This works by flipping the problem on the head. 
+It straightaway converts it to a positive number with Numeric#abs 
+and then prepends it with a negative operator to make it negative. 
+abs returns the absolute value of a number 
+(the non-negative value of a number without regard to its sign).
+
+Thus, instead of operating by checking the value and proceeding based on the evaluation,
+ the opposite can be applied by stripping it of its sign, 
+ then giving it the negative sign.
+
+This is clearly shorter. However is it superior?
+answer: depends on the situation!
+=end
