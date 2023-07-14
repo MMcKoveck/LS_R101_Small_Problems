@@ -66,3 +66,19 @@ puts (numbers.include?(search) ?
   "The number #{search} appears in #{numbers}." :
   "The number #{search} does not appear in #{numbers}.")
 =end
+
+=begin THIS DUDE CODY MCKEEFRY'S CODE IS GREAT
+
+text_arr = %w(1st 2nd 3rd 4th 5th)
+arr = []
+(0..4).each do |x|
+  puts "Enter the #{text_arr[x]} number:"
+  arr[x] = gets.chomp.to_i
+end
+puts "Enter the last number:"
+last_num = gets.chomp.to_i
+puts (arr.include?(last_num) ?
+  "The number #{last_num} appears in #{arr}" :
+  "The number #{last_num} does not appear in #{arr}")
+
+  =end
