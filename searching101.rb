@@ -45,12 +45,11 @@ numbers = []
 questions = ['1st', '2nd', '3rd', '4th', '5th', 'last']
 position = 0
 loop do
-  puts "==> Enter the #{questions[position]} number:" #FIND INCREMENTER
+  puts "==> Enter the #{questions[position]} number:" 
   position += 1 
   break if numbers.size == 5
   numbers << gets.chomp.to_i
 end
-
 search = gets.chomp.to_i
 if numbers.include?(search) 
   puts "The number #{search} appears in #{numbers}." 
@@ -58,3 +57,12 @@ else
   puts "The number #{search} does not appear in #{numbers}."
 end
 
+# MY OWN FE
+# I REALLY WANTED A TERNARY TO WORK HERE, BUT I WAS TOO IMPATIENT!
+# THIS WORKS THOUGH!!
+# BUT FOR READABILITY, I LIKE THE if/else STATEMENT MORE
+=begin
+puts (numbers.include?(search) ?
+  "The number #{search} appears in #{numbers}." :
+  "The number #{search} does not appear in #{numbers}.")
+=end
