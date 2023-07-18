@@ -65,6 +65,63 @@ end
 This is more idiomatic ruby than the first solution, 
 but it does take a little more effort to figure out what is going on.
 Note that this solution requires !! to force the return value to a boolean.
-
+"because...everything evaluates to something truthy or falsy using the !! operator"
 THERE IS SO MUCH MORE! EXPLORE ^
+=end
+=begin GRAHAM JARVIS' CODE
+def xor?(x, y)
+  x != y
+endIt can be adapted to make it work with non-boolean expressions 
+(i.e. for all expressions, because in Ruby everything evaluates to something truthy or falsy) 
+  using the !! operator:
+def xor?(x, y)
+  !!x != !!y
+end
+
+p xor?(a = 5, nil) == true  # true
+p xor?(false, nil) == false # true
+=end
+=begin CODY MCKEEFRY'S CODE
+def xor?(arg1, arg2)
+  return false if(!!arg1 == !!arg2)
+  true
+end
+=end
+
+=begin MAREK MARTIN'S CODE
+def xor?(expr1, expr2)
+  if (!expr1 && expr2) || (expr1 && !expr2) 
+    true
+  else 
+    false
+  end 
+end 
+#or
+def xor?(expr1, expr2)
+  expr1 ^ expr2
+end 
+# I really like the simplicity of this one and it's use is for exactly this question 
+# with its specific arguments given
+=end
+=begin ^
+Some of you may be tempted to use the ^ operator for this exercise. 
+The ^ operator is a bit-wise operator for performing exclusive-or bit operations. 
+In some cases, you can use ^ as an exclusive-or operator. 
+However, it only works properly when both values are numeric or both are boolean
+ -- anything else may lead to unexpected results. 
+ For instance, you might expect the following expression to return a truthy value:
+
+ 'a' ^ false
+
+It doesn't. Instead, it raises an error. 
+Confusingly, the following returns a truthy value:
+
+false ^ 'a'
+
+FROM DOCS:
+
+false ^ obj → true or false
+nil ^ obj → true or false
+Exclusive Or—If obj is nil or false, returns false; otherwise, returns true.
+
 =end
