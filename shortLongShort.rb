@@ -19,7 +19,7 @@ compare arg lengths
 assign long and short
 concat s l s
 =end # PEDAC
-
+#=begin MY CODE
 def short_long_short(str1, str2)
   if str1.size > str2.size
     long = str1
@@ -30,3 +30,17 @@ def short_long_short(str1, str2)
   end #TERN THIS MOTHA OUT
   short + long + short
 end
+#=end # MY CODE
+=begin THEIR CODE
+def short_long_short(string1, string2)
+  if string1.length > string2.length
+    string2 + string1 + string2
+  else
+    string1 + string2 + string1
+  end
+end
+
+THEY DIDN'T' REASSIGN THE STRINGS. EASIER.
+LOTS OF WAYS TO DO THIS BUT CLARITY IS MOST IMPORTANT 
+NOT CLEVERNESS
+=end
