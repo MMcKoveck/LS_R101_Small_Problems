@@ -72,4 +72,28 @@ Returns a copy of self with characters specified by selectors removed
 count(*selectors) → integer
 Returns the total number of characters in self that are specified by 
 the given selectors (see Multiple Character Selectors):
+#=end
+
+Within a character class the hyphen (-) is a metacharacter denoting 
+an inclusive range of characters. [abcd] is equivalent to [a-d]. 
+A range can be followed by another range, so [abcdwxyz] is equivalent to [a-dw-z]. 
+The order in which ranges or individual characters appear inside a 
+character class is irrelevant.
+
+/[0-9a-f]/.match('9f') #=> #<MatchData "9">
+/[9f]/.match('9f')     #=> #<MatchData "9">
+If the first character of a character class is a caret (^) the class is inverted: 
+it matches any character except those named.
+
+/[^a-eg-z]/.match('f') #=> #<MatchData "f">
+A character class may contain another character class. 
+By itself this isn’t useful because [a-z[0-9]] describes the same set as [a-z0-9]. 
+However, character classes also support the && operator which performs 
+set intersection on its arguments. The two can be combined as follows:
+
+/[a-w&&[^c-g]z]/ # ([a-w] AND ([^c-g] OR z))
+This is equivalent to:
+
+/[abh-w]/
+
 =end
