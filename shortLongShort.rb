@@ -43,4 +43,11 @@ end
 THEY DIDN'T' REASSIGN THE STRINGS. EASIER.
 LOTS OF WAYS TO DO THIS BUT CLARITY IS MOST IMPORTANT 
 NOT CLEVERNESS
+THAT BEING SAID, HERE'S CODY AGAIN!
+
+def short_long_short(str1, str2)
+  str1.length > str2.length ? str2+str1+str2 : str1+str2+str1
+end
+
+NICE.
 =end
