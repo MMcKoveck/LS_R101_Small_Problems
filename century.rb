@@ -19,7 +19,10 @@ century(11201) == '113th'
 century(12201) == '123rd'
 =end
 #=begin PEDAC
-method with one input
+main method with one input
+generate sub methods
+apply them with case statement
+
 century(year)
 suffix:
 [-1] makes
@@ -50,4 +53,64 @@ input.length 5 do         check first 3 and last 2.
   if last 2 > 0 add 1 to first 3
     check number [1,2]?(is this the right notation?) of first3
     use newsubmethod
+
+
+
+=end # PEDAC
+#=begin MY CODE
+number_string = nil
+
+def singles(year) # FOR WHEN LENGTH == 3
+  front = year.to_s[0]
+  back = year.to_s[-2,2]
+  front = front.to_i
+  back = back.to_i
+  front +=1 if back > 0 
+  number_string = front.to_s
+end
+
+
+def doubles(year)  # FOR WHEN LENGTH == 4
+  front = year.to_s[0,2]
+  back = year.to_s[-2,2]
+  front = front.to_i
+  back = back.to_i
+  front +=1 if back > 0
+  number_string = front.to_s
+end
+
+def triples(year)  # FOR WHEN LENGTH == 5
+  front = year.to_s[0,3]
+  back = year.to_s[-2,2]
+  front = front.to_i
+  back = back.to_i
+  front +=1 if back > 0
+  number_string = front.to_s
+end
+
+def suffix(number_string) 
+  if (11..13).include?(number_string[-2,2].to_i)
+    suffix = 'th' 
+  elsif number_string[-1] == '1'
+    suffix = 'st'
+  elsif number_string[-1] == '2'
+    suffix = 'nd'
+  elsif number_string[-1] == '3'
+    suffix = 'rd'
+  else suffix = 'th'
+  end
+
+def everything_elthe(number_string)
+  number_string + 'th'
+end
+
+def century(year)
+  "1st" if year <= 100
+  if year.length == 3 do
+    singles(year) + suffix(number_string)
+  elsif year.length == 4 do
+    doubles(year) + suffix(number_string)
+  elsif year.length == 5 do
+    triples(year) + suffix(number_string)
+
 
