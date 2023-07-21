@@ -18,7 +18,7 @@ century(1127) == '12th'
 century(11201) == '113th'
 century(12201) == '123rd'
 =end
-#=begin PEDAC
+=begin PEDAC
 main method with one input
 generate sub methods
 apply them with case statement
@@ -58,7 +58,7 @@ input.length 5 do         check first 3 and last 2.
 
 =end # PEDAC
 #=begin MY CODE
-number_string = nil
+$number_string = 'fnord' # I WENT GLOBAL
 
 def singles(year) # FOR WHEN LENGTH == 3
   front = year.to_s[0]
@@ -66,7 +66,7 @@ def singles(year) # FOR WHEN LENGTH == 3
   front = front.to_i
   back = back.to_i
   front +=1 if back > 0 
-  number_string = front.to_s
+  $number_string = front.to_s
 end
 
 
@@ -76,7 +76,7 @@ def doubles(year)  # FOR WHEN LENGTH == 4
   front = front.to_i
   back = back.to_i
   front +=1 if back > 0
-  number_string = front.to_s
+  $number_string = front.to_s
 end
 
 def triples(year)  # FOR WHEN LENGTH == 5
@@ -85,32 +85,46 @@ def triples(year)  # FOR WHEN LENGTH == 5
   front = front.to_i
   back = back.to_i
   front +=1 if back > 0
-  number_string = front.to_s
+  $number_string = front.to_s
 end
 
 def suffix(number_string) 
-  if (11..13).include?(number_string[-2,2].to_i)
+  if (11..13).include?($number_string[-2,2].to_i)
     suffix = 'th' 
-  elsif number_string[-1] == '1'
+  elsif $number_string[-1] == '1'
     suffix = 'st'
-  elsif number_string[-1] == '2'
+  elsif $number_string[-1] == '2'
     suffix = 'nd'
-  elsif number_string[-1] == '3'
+  elsif $number_string[-1] == '3'
     suffix = 'rd'
   else suffix = 'th'
   end
-
-def everything_elthe(number_string)
-  number_string + 'th'
 end
 
 def century(year)
-  "1st" if year <= 100
-  if year.length == 3 do
-    singles(year) + suffix(number_string)
-  elsif year.length == 4 do
-    doubles(year) + suffix(number_string)
-  elsif year.length == 5 do
-    triples(year) + suffix(number_string)
+  if year <= 100 
+    "1st" 
+  elsif year > 100 && year < 1000 
+    "#{singles(year)}" + "#{suffix($number_string)}"
+  elsif year >= 1000 && year < 10000 
+    "#{doubles(year)}" + "#{suffix($number_string)}"
+  elsif year >= 10000 && year < 100000
+    "#{triples(year)}" + "#{suffix($number_string)}"
+  else
+    puts "Number Too High"
+  end
+end
 
-
+puts "Please enter a year:"
+year = gets.chomp.to_i
+puts "#{year} is in the #{century(year)} century."
+# p century(2000) == '20th'
+# p century(2001) == '21st'
+# p century(1965) == '20th'
+# p century(256) == '3rd'
+# p century(5) == '1st'
+# p century(10103) == '102nd'
+# p century(1052) == '11th'
+# p century(1127) == '12th'
+# p century(11201) == '113th'
+# p century(12201) == '123rd'
