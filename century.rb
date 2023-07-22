@@ -58,7 +58,7 @@ input.length 5 do         check first 3 and last 2.
 
 =end # PEDAC
 #=begin MY CODE
-$number_string = 'fnord' # I WENT GLOBAL
+$number_string = 'fnord' # I WENT GLOBAL 
 
 def singles(year) # FOR WHEN LENGTH == 3
   front = year.to_s[0]
@@ -68,7 +68,6 @@ def singles(year) # FOR WHEN LENGTH == 3
   front +=1 if back > 0 
   $number_string = front.to_s
 end
-
 
 def doubles(year)  # FOR WHEN LENGTH == 4
   front = year.to_s[0,2]
@@ -104,16 +103,30 @@ end
 def century(year)
   if year <= 100 
     "1st" 
-  elsif year > 100 && year < 1000 
+  elsif year.to_s.length == 3 
     "#{singles(year)}" + "#{suffix($number_string)}"
-  elsif year >= 1000 && year < 10000 
+  elsif year.to_s.length == 4 
     "#{doubles(year)}" + "#{suffix($number_string)}"
-  elsif year >= 10000 && year < 100000
+  elsif year.to_s.length == 5 
     "#{triples(year)}" + "#{suffix($number_string)}"
   else
-    puts "Number Too High"
+    "Unforseeable Future. Invalid"
   end
 end
+# KEEP THIS
+# def century(year)
+#   if year <= 100 
+#     "1st" 
+#   elsif year > 100 && year < 1000 
+#     "#{singles(year)}" + "#{suffix($number_string)}"
+#   elsif year >= 1000 && year < 10000 
+#     "#{doubles(year)}" + "#{suffix($number_string)}"
+#   elsif year >= 10000 && year < 100000
+#     "#{triples(year)}" + "#{suffix($number_string)}"
+#   else
+#     puts "Number Too High"
+#   end
+# end
 
 puts "Please enter a year:"
 year = gets.chomp.to_i
@@ -128,3 +141,61 @@ puts "#{year} is in the #{century(year)} century."
 # p century(1127) == '12th'
 # p century(11201) == '113th'
 # p century(12201) == '123rd'
+#=end # MY CODE
+=begin THEIR CODE
+
+def century(year)
+  century = year / 100 + 1
+  century -= 1 if year % 100 == 0
+  century.to_s + century_suffix(century)
+end
+
+def century_suffix(century)
+  return 'th' if [11, 12, 13].include?(century % 100)
+  last_digit = century % 10
+
+  case last_digit
+  when 1 then 'st'
+  when 2 then 'nd'
+  when 3 then 'rd'
+  else 'th'
+  end
+end
+
+First, notice a pattern about a century. 
+It is equal to the current year divided by 100 plus 1. 
+The exception to this is if the year is some multiple of 100. 
+In that case, the century is the current year divided by 100.
+
+Next we need to understand which suffix to append for our century, 
+the options being: 'th', 'nd', 'rd', 'st'. 
+We decide which one to use by checking the last digit of the century. 
+Though, before we do that, we do need to do one extra check. 
+  If the century's value mod 100 ends in either 11, 12, or 13, 
+  then we should return 'th'. 
+  Any other time, we can return a suffix determined by our case statement 
+    and the value of century % 10.
+
+Finally, we combine the string representation of the century with the correct suffix, 
+and we have our answer.
+=end # THEIR CODE
+=begin GRAHAM JARVIS' CODE
+THIS IS SHORT AND SWEET, I DIG THE CONDITIONALS
+
+def century(date)
+  century = date / 100
+  century += 1 unless (date % 100 == 0)
+  century = century.to_s
+  if century.end_with?("1") && !century.end_with?("11")
+    suffix = "st"
+  elsif century.end_with?("2") && !century.end_with?("12")
+    suffix = "nd"
+  elsif century.end_with?("3") && !century.end_with?("13")
+    suffix = "rd"
+  else
+    suffix = "th"
+  end
+  century + suffix
+end
+
+=end # GRAHAM JARVIS' CODE
