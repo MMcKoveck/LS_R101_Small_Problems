@@ -33,12 +33,16 @@ correct order?
 =end # PEDAC
 #=begin MY CODE
 def leap_year?(year)
-  (((year % 400 == 0) && (year % 100 == 0)) || ((year % 4 == 0) && (year % 100 != 0))) ? (p 'yes') : (p 'no')
+  (((year % 400 == 0) && (year % 100 == 0)) || ((year % 4 == 0) && (year % 100 != 0)))
 end
 loop do
 puts "is it a leap year?"
 year = gets.chomp.to_i
-leap_year?(year)
+  if leap_year?(year)
+    puts "yes"
+  else
+    puts "no"
+  end
 end
 
 # ((year % 400 == 0) && (year % 100 == 0)) || ((year % 4 == 0) && (year % 100 != 0))
