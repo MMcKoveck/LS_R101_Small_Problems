@@ -86,3 +86,12 @@ def multisum(num)
   (1..num).to_a.select { |i| i % 3 == 0 || i % 5 == 0 }.inject(:+)
 end
 =end # CAMERON ADAMS' CODE
+=begin FADY N.'s CODE
+def multisum(number)
+  selection = (1..number).select do |num|
+    num % 3 == 0 || num % 5 == 0
+  end
+
+  total = selection.sum
+end
+=end # FADY N.'s CODE
