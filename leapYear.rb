@@ -103,3 +103,10 @@ year = gets.chomp.to_i
 break if year == 0
 leap_year?(year) ? (puts "yes") : (puts "no")
 end
+
+=begin LUIS FERNANDO ANTUNES' CODE
+# NICE TERNARY
+def leap_year?(year)
+  year % 100 == 0 ? year % 400 == 0 : year % 4 == 0
+end
+=end
