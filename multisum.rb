@@ -95,3 +95,19 @@ def multisum(number)
   total = selection.sum
 end
 =end # FADY N.'s CODE
+=begin SHAWN GRYCKI'S CODE
+def multisum(integer)
+  values = (1..integer).to_a
+  values.select! { |int| int % 3 == 0 || int % 5 == 0 }
+  values.inject(:+)
+end
+=end # SHAWN GRYCKI'S CODE
+=begin SEAN POWELL'S CODE
+def multisum(int)
+  array = []
+  (1..int).each do |num|
+    array << num if (num % 3 == 0 || num % 5 == 0)
+  end
+  array.reduce(:+)
+end
+=end # SEAN POWELL'S CODE
