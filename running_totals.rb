@@ -108,3 +108,20 @@ def running_total(arr1) # THIS ONE WORKS FOR EVERYTHING
     arr2
   end
 end
+
+=begin THEIR CODE
+def running_total(array)
+  sum = 0
+  array.map { |value| sum += value }
+end
+
+This solution does nothing fancy; 
+it just walks through the array calculating the running total while building the resulting array. 
+#map makes this really easy.
+
+# I REALLY MISSED THE MARK HERE AND WENT THE LONG WAY!!
+# REVISIT THIS!!!
+=end # THEIR CODE
+=begin FE
+Try solving this problem using Enumerable#each_with_object or 
+Enumerable#inject (note that Enumerable methods can be applied to Arrays).
