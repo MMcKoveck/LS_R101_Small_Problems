@@ -79,4 +79,43 @@ The value of the accumulator a after each element in the [1,2,3] is evaluated,
 respectively, is: 0*10+1 = 1; then 1*10+2 = 12; then 12*10+3 = 123. – 
 Jon Schneider
  Dec 8, 2021
- =end
+=end
+#=begin THEIR CODE
+# NOTICE THE ALL CAPS HASH
+ DIGITS = {
+  '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4,
+  '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9
+}
+
+def string_to_integer(string)
+  digits = string.chars.map { |char| DIGITS[char] }
+
+  value = 0
+  digits.each { |digit| value = 10 * value + digit }
+  value
+end
+
+As usual, this isn't' the shortest or even the easiest solution to this problem, 
+but it's' straightforward. 
+The big takeaway from this solution is our use of the DIGITS hash to 
+convert string digits to their numeric values. 
+This technique of using hashes to perform conversions is a common idiom 
+that you can use in a wide variety of situations, 
+often resulting in code that is easier to read, understand, and maintain.
+
+The actual computation of the numeric value of string is mechanical. 
+We take each digit and add it to 10 times the previous value, 
+which yields the desired result in almost no time. 
+For example, if we have 4, 3, and 1, we compute the result as:
+
+10 * 0 + 4 -> 4
+10 * 4 + 3 -> 43
+10 * 43 + 1 -> 431
+=end # THEIR CODE
+#=begin FE
+
+Write a hexadecimal_to_integer method that 
+converts a string representing a hexadecimal number to its integer value.
+Example:
+hexadecimal_to_integer('4D9f') == 19871
+# EXPLORE HEXADECIMAL
