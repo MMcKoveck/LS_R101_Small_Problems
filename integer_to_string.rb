@@ -48,3 +48,7 @@ def integer_to_string(number)
   number_arr.join
 end
 #=end
+=begin CODY MCKEEFRY CRACKS ME UP!
+def integer_to_string(num)
+  "#{num}"
+end
