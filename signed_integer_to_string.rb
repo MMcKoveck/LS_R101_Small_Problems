@@ -20,6 +20,7 @@ add '-' if input[0] < 0
 #=begin MY CODE
 # I2S METHOD
 #=begin
+# USE THIS EXISTING METHOD
 def integer_to_string(number)
   number_hash = {0 => '0', 1 => '1', 2 => '2', 3 => '3', 4 => '4', 5 => '5', 6 => '6', 7 => '7', 8 => '8', 9 => '9'}
   number_arr = number.digits.reverse
@@ -65,3 +66,48 @@ def signed_integer_to_string(num)
 end
 
 #=end # MY CODE
+=begin THEIR CODE
+def signed_integer_to_string(number)
+  case number <=> 0
+  when -1 then "-#{integer_to_string(-number)}"
+  when +1 then "+#{integer_to_string(number)}"
+  else         integer_to_string(number)
+  end
+end
+
+This solution is very similar to the string_to_signed_integer method we wrote 2 exercises ago. 
+It simply checks the sign of the number, and passes control to integer_to_string for the heavy lifting.
+
+The expression number <=> 0 may look a bit odd; this is ruby's' "spaceship" operator. 
+It compares the left side against the right side, then returns 
++1 if the left side is greater than the right, 
+-1 if the left side is smaller than the right, 
+and 0 if the values are the same. 
+This is often useful when you need to know whether a number is positive, negative, or zero.
+=end # THEIR CODE
+=begin FE
+def signed_integer_to_string(num)
+  #absolute = (num < 0) ? (num * -1) : (num) # DON'T' NEED THIS LINE ANYMORE BECAUSE
+  string = integer_to_string(num.abs) #CODY MCKEEFRY SHOWED ME .abs
+  string.prepend('-') if num < 0 
+  string.prepend('+') if num > 0 
+  string
+end
+=begin CODY MCKEEFRY'S' CODE
+def integer_to_string(num)
+  "#{num}"
+end
+
+def signed_integer_to_string(num)
+  sign_hash = {
+    -1 => '-',
+    0 => "",
+    1 => "+"
+  }
+
+  "#{sign_hash[num <=> 0]}#{integer_to_string(num.abs)}"
+end
+=end # CODY MCKEEFRY'S' CODE
+# Refactor our solution to reduce the 3 integer_to_string calls to just one.
+# I ONLY HAVE ONE
+=end # FE
