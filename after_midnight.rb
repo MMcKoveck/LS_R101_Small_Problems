@@ -102,3 +102,10 @@ def before_midnight(time)
   total == 1440 ? total = 0 : total
 end
 =end # MY CODE
+#=begin A BETTER WAY TO SPLIT time INTO HOUR AND MINUTE INTEGERS
+def after_midnight(time)
+  hours, minutes = time.split(':').map(&:to_i)
+  hours == 24 ? hours = 0 : hours *= 60
+  total = hours + minutes
+end
+=end
