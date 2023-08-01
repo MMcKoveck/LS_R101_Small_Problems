@@ -66,3 +66,47 @@ def swap(string)
   new_string = new_words.join(' ')
 end  
 # END THIS WORKS
+=begin THEIR CODE
+def swap_first_last_characters(word)
+  word[0], word[-1] = word[-1], word[0] # WHO KNEW IT  COULD BE SO EASY
+  word
+end
+
+def swap(words)
+  result = words.split.map do |word| #THIS IS ALL AT ONCE + NO NEW ARRAY
+    swap_first_last_characters(word)
+  end
+  result.join(' ') # DIDN'T NEED TO MAKE A NEW VARIABLE
+end
+# OH MY GOD THIS IS SO MUCH SIMPLER
+Our solution takes a straightforward approach; it simply chops the string into words, 
+then iterates through all of the words using map, and produces an array of modified words. 
+We then apply join to that array to produce our return value.
+
+The tricky part here is actually swapping the first and last characters of each word. 
+Because of the mild trickiness, we use a separate method. It uses this common idiom:
+
+a, b = b, a # LINE 71
+
+to exchange the values of a and b. In our method, a is the first letter of the word, 
+and b is the last letter of the word. When Ruby sees something like this, 
+it effectively creates a temporary array with the values from the right side ([b, a]), 
+and then assigns each element from that array into the corresponding named variable:
+
+a = b   # b is value from position 0 of temporary array (original value of b)
+b = a   # a is value from position 1 of temporary array (original value of a)
+
+Looked at another way, this is equivalent to:
+
+temporary = [b, a]
+a = temporary[0]
+b = temporary[1]
+
+This multiple-assignment syntax is powerful and complex, 
+and it sometimes surprises people who haven't' seen it before. 
+Nevertheless, you should at least learn and use this idiomatic form of the syntax, 
+but beware of using the more complex forms allowed by Ruby.
+=end #THEIR CODE
+=begin FE
+nope, just does the letters, not the word
+=end # FE
