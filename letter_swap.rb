@@ -1,4 +1,4 @@
-#=begin
+=begin
 Given a string of words separated by spaces, 
 write a method that takes this string of words and returns a string in which 
 the first and last letters of every word are swapped.
@@ -12,7 +12,7 @@ swap('Oh what a wonderful day it is') == 'hO thaw a londerfuw yad ti si'
 swap('Abcde') == 'ebcdA'
 swap('a') == 'a'
 =end
-#=begin PEDAC
+=begin PEDAC
 def swap(string)
   split(' ') to array
   swap letters (make this an internal method)
@@ -24,7 +24,7 @@ def swap(string)
   [0] no space
   [1+] leading space
 =end # PEDAC
-#=begin TEST
+=begin TEST
 def swap(string)
   words = []
   words = string.split(' ')#.map(&:to_a)
@@ -46,7 +46,7 @@ end
 =end # TEST
 #=begin MY CODE
 
-# THIS WORKS (EXCEPT FOR SINGLES!!!!!)
+# THIS WORKS 
 def swap_letters(word)
   return word if word.length == 1
   letters = []
