@@ -49,5 +49,15 @@ You can solve this problem using regular expressions (see the Regexp class docum
 For a fun challenge, give this a try with regular expressions. If you haven't already read our book, 
 Introduction to Regular Expressions, you may want to keep it handy if you try this challenge.
 
+REGEX IS A BEAR AND THERE IS STILL A LOT TO LEARN THERE
+=begin Darragh O'Carroll's CODE
+
+def regex_crunch(string)
+  string.gsub(/(\w)\1*/, '\1')
+end
+
+and for the regex, use back referencing (\1) with *(zero or more of the back referenced character) 
+to replace with a single occurrence of the character ('\1').
+=end Darragh O'Carroll's CODE
 Can you think of other solutions besides regular expressions?
 =end # FE
