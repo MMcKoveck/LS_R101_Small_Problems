@@ -39,8 +39,8 @@ def reverse!(list)
 def reverse!(list)
  reversed = []
  loop do 
-  reversed << list.pop
-  break if list == []
+   break if list == []
+   reversed << list.pop
  end
  list << reversed
  list.flatten!
