@@ -63,3 +63,35 @@ Likewise, the second test of list == [1, 3, 2] confirms that the original array 
 An even shorter solution is possible by using either .reduce or .each_with_object. 
 Just for fun, read about these methods in the Enumerable module documentation, 
 and try using one in your .reverse method.
+
+#=begin CODY MCKEEFRY'S' CODE
+def reverse(arr)
+  arr.inject([]) { |result, x| result.unshift(x)}
+end
+
+# MITCH MILLS FTW! (ACTUALLY KAREN KENNEDY)
+This was what I came up with using Enumerable.inject
+
+def reverse(array)
+  array.inject([]) do |new_array, element|
+    new_array.prepend(element)
+  end
+end
+
+That works, but looking through others' 'solutions I came across this shorter version:
+
+def reverse(arr)
+  arr.inject([], :prepend)
+end
+
+The documentation for Enumerable.inject clearly states that the symbol can be 
+an operator OR A METHOD, 
+but I had never noticed that part about using a method, or seen an example of it. 
+So thanks, previous LS students, I learned something new today!
+
+# MARIA MILOSH THIS ONE IS INTERESTING
+def reverse(list)
+  list.sort_by { |a| -list.index(a) }
+end
+
+=end
