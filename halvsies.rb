@@ -62,7 +62,7 @@ def halvsies(array)
     array1 << array.shift
     array2.unshift(array.pop)
   end
-  array3 = [array1, array2.compact]
+  array3 = [array1, array2.compact!]
   p array3
 end
 irb(main):461:0> halvsies([1, 5, 2, 4, 3]) == [[1, 5, 2], [4, 3]]
