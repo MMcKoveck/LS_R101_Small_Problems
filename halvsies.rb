@@ -54,7 +54,7 @@ def halvsies(array)
 end
 
 #=end MY CODE
-# THIS DOESN'T' HANDLE UNEVEN ARRAYS
+# THIS DOESN'T' HANDLE UNEVEN ARRAYS WITHOUT .compact
 def halvsies(array)
   array1 = []
   array2 = []
@@ -62,7 +62,7 @@ def halvsies(array)
     array1 << array.shift
     array2.unshift(array.pop)
   end
-  array3 = [array1, array2]
+  array3 = [array1, array2.compact]
   p array3
 end
 irb(main):461:0> halvsies([1, 5, 2, 4, 3]) == [[1, 5, 2], [4, 3]]
