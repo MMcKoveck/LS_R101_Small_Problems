@@ -32,6 +32,11 @@ def find_dup(array)
 end
 # <=> only returns -1,0,1
 #array index if array index <=> array index + 1 == 0
+# ADD THE COMPARISONS TOGETHER WITH .sum !!!
+# I ABOUT HAD THIS IN IRB, BUT THIS WAS MITCH MILLS' CODE!
+def find_dup(array)
+  array.sum - array.uniq.sum
+end
 
 #p find_dup([1, 5, 3, 1])
 p find_dup([18,  9, 36, 96, 31, 19, 54, 75, 42, 15,
@@ -94,3 +99,43 @@ If we ever add the same item twice to this second array, then we know that we ha
 How did you end up solving this one?
 =end
 
+#=begin OTHER CODE
+# ADD THE COMPARISONS TOGETHER WITH .sum !!!
+# I ABOUT HAD THIS IN IRB, BUT THIS WAS MITCH MILLS' CODE!
+def find_dup(array)
+  array.sum - array.uniq.sum
+end
+
+# DYLAN SPYER'S' CODE
+Extract the array to a hash where key is the number and value is the frequency of the number
+Select items in the hash where the value is equal to 2
+Get just the key from that item (returns array)
+Get the element at index 0 (the only element)
+
+def find_dup(arr)
+  arr.tally.select { |k,v| v == 2 }.keys[0]
+end
+
+# MITCH MILLS FTW EACH WITH INDEX EACH WITH OBJECT
+My first solutions involved sorting the array:
+# FIRST MORE ELEGANT VERSION OF MINE
+def find_dup(array)
+  array.sort.each_cons(2) do |pair|
+    return pair[0] if pair[0] == pair[1]
+  end
+end
+# SECOND
+def find_dup(array)
+  array.sort!.each_with_index do |num, idx|
+    return num if num == array[idx + 1]
+  end
+end
+Then I solved it using an array to track what had already been looked at:
+def find_dup(array)
+  array.each_with_object([]) do |num, seen|
+    return num if seen.include?(num)
+    seen << num
+  end
+end
+
+=end
