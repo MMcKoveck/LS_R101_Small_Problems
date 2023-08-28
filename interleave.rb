@@ -58,5 +58,9 @@ Take a few minutes to read about Array.zip. .zip doesn't' do the same thing as i
   but it is very close, and more flexible. 
   In fact, interleave can be implemented in terms of zip and one other method from the Array class. 
   See if you can rewrite interleave to use zip.
-
-
+# THIS WORKS
+def interleave(array1, array2)
+  array3 = [] # MUST INITIALIZE ARRAY
+  array3 << array1.zip(array2)
+  array3.flatten # MUST FLATTEN OR IT'S' => [[[1, "a"], [2, "b"], [3, "c"]]]
+end
