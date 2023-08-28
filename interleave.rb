@@ -64,3 +64,29 @@ def interleave(array1, array2)
   array3 << array1.zip(array2)
   array3.flatten # MUST FLATTEN OR IT'S' => [[[1, "a"], [2, "b"], [3, "c"]]]
 end
+#=begin CODY MCKEEFRY'S' CODE
+def interleave(arr1, arr2)
+  arr1.zip(arr2).flatten
+end
+# SAVES A LOT OF STEPS
+=end # CODY MCKEEFRY'S' CODE
+#=begin MITCH MILLS' 'CODE
+def interleave(arr1, arr2)
+  arr1.each_index.with_object([]) do |idx, result|
+    result << arr1[idx] << arr2[idx]
+  end
+end
+# each_index.with_object([])
+=end # MITCH MILLS' 'CODE
+#=begin PATRICK MORAN'S' CODE
+This is super cool! Your comment inspired me to look at the documentation for flatten 
+and I learned that we can specify the 'level' of flattening. 
+So the below solution would work for your example:
+
+def interleave(a1, a2)
+  a1.zip(a2).flatten(1)
+end
+
+Thanks for an example that inspired further investigation.
+=end # PATRICK MORAN'S' CODE
+
