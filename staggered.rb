@@ -77,4 +77,23 @@ def staggered_case(string)
   array.each_with_index {|x, index| x.downcase! if index % 2 == 0}
   p array.join #(p to test)
 end
+
+# MITCH MILLS' ' CODE
+Further Exploration (wherein I learned what the heck a keyword argument is):
+# 2nd ARGUMENT IN (), true or flase
+def staggered_case(string, start_upper: true)
+  string.chars.each_with_object('') do |char, result|
+    result << (start_upper ? char.upcase : char.downcase)
+    start_upper = !start_upper
+  end
+end
+
+p staggered_case('I Love Launch School!') == 'I LoVe lAuNcH ScHoOl!'
+p staggered_case('ALL_CAPS') == 'AlL_CaPs'
+p staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 NuMbErS'
+
+p staggered_case('I Love Launch School!', start_upper: false) == "i lOvE LaUnCh sChOoL!"
+p staggered_case('ALL_CAPS', start_upper: false) == "aLl_cApS"
+p staggered_case('ignore 77 the 444 numbers', start_upper: false) == "iGnOrE 77 tHe 444 nUmBeRs"
+
 =end
