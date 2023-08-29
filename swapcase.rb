@@ -71,3 +71,26 @@ end
 
 # TRY TERNARY
 # (string.start_with?(/[A-Z]/)) ? (new_string << string[0].downcase!) : ((string.start_with?(/[a-z]/)) ? (new_string << string[0].upcase!) : (new_string << string.slice!(0)))
+#=begin THEIR CODE
+def swapcase(string)
+  characters = string.chars.map do |char|
+    if char =~ /[a-z]/
+      char.upcase
+    elsif char =~ /[A-Z]/
+      char.downcase
+    else
+      char
+    end
+  end
+  characters.join
+end
+
+In our solution, we iterate through each character in the string passed into swapcase. 
+If the character is lowercase (/[a-z]/), we make it uppercase; 
+if it is uppercase (/[A-Z]/), we make it lowercase. 
+For all other characters, we do nothing.
+
+Each character is then mapped to a new array and assigned to characters. 
+Finally, we join characters together into a new String and return that value.
+=end # THEIR CODE
+
