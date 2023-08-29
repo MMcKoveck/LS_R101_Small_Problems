@@ -71,5 +71,10 @@ def staggered_case(string)
   end
   p result #(p to test)
 end
-
+# MINE REVISED
+def staggered_case(string)
+  array = string.upcase.split('')
+  array.each_with_index {|x, index| x.downcase! if index % 2 == 0}
+  p array.join #(p to test)
+end
 =end
