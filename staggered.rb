@@ -26,3 +26,50 @@ def staggered_case(string)
 end
 
 =end # MY CODE
+#=begin THEIR CODE
+def staggered_case(string)
+  result = ''
+  need_upper = true
+  string.chars.each do |char|
+    if need_upper
+      result += char.upcase
+    else
+      result += char.downcase
+    end
+    need_upper = !need_upper
+  end
+  result
+end
+
+This solution simply iterates through the String while building another String one character at a time,
+either uppercasing or lowercasing each character as needed. 
+Note that we never need to actually test whether a character is upper- or lowercase, 
+or even whether it is alphabetic: the upcase and downcase methods handle this for us.
+
+To keep track of whether we want to upcase or downcase each character, 
+we define a boolean variable need_upper that starts out as true. 
+Each time we process a character, we upcase it or downcase it based on the current state of need_upper. 
+We then toggle need_upper from true to false or false to true using need_upper = !need_upper.
+=end
+#=begin FE
+Can you modify this method so the caller can request that the first character be downcased 
+rather than upcased? If the first character is downcased, 
+then the second character should be upcased, and so on.
+
+Hint: Use a keyword argument.
+(START WITH FALSE?)
+def staggered_case(string)
+  result = ''
+  need_upper = false
+  string.chars.each do |char|
+    if need_upper
+      result += char.upcase
+    else
+      result += char.downcase
+    end
+    need_upper = !need_upper
+  end
+  p result #(p to test)
+end
+
+=end
