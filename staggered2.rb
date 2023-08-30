@@ -21,7 +21,6 @@ def staggered_case(string)
   result = ''
   need_upper = true
   string.downcase.chars.each do |char|
-    
     if char =~ /[a-z]/ && need_upper
       result += char.upcase
       need_upper = !need_upper
@@ -30,11 +29,11 @@ def staggered_case(string)
       need_upper = !need_upper
     else
       result += char
-    end
-    
+    end 
   end
   result
 end
+
 =end # MY CODE
 #=begin THEIR CODE
 def staggered_case(string)
@@ -54,3 +53,56 @@ def staggered_case(string)
   end
   result
 end
+
+This solution is very similar to the previous solution; 
+the only difference is that we need to avoid changing need_upper 
+when processing non-alphabetic characters. 
+  We use a simple regular expression with the /i flag (ignore case) to detect letters.
+=end
+#=begin FE
+Modify this method so the caller can determine whether non-alphabetic characters 
+should be counted when determining the upper/lowercase state. 
+That is, you want a method that can perform the same actions that this method does, 
+or operates like the previous version.
+
+Hint: Use a keyword argument.
+# THEIRS FE
+def staggered_case(string, skip = true)
+  result = ''
+  need_upper = true
+  string.chars.each do |char|
+    if char =~ /[a-z]/i
+      if need_upper
+        result += char.upcase
+      else
+        result += char.downcase
+      end
+      need_upper = !need_upper
+    else
+      result += char
+      need_upper = !need_upper if skip == false
+    end
+  end
+  p result
+end
+
+# MINE FE
+def staggered_case(string, skip = true)
+  result = ''
+  need_upper = true
+  string.downcase.chars.each do |char|
+    if char =~ /[a-z]/ && need_upper
+      result += char.upcase
+      need_upper = !need_upper
+    elsif char =~ /[a-z]/ && !need_upper
+      result += char
+      need_upper = !need_upper
+    else
+      result += char
+      need_upper = !need_upper if skip == false
+    end 
+  end
+  result
+end
+
+=end # FE
