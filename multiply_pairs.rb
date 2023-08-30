@@ -65,6 +65,7 @@ What do you think? Did you go about solving this exercise differently?
 # MORE OR LESS THE SAME AS 2 
 #=begin ERIC QIAN'S' CODE
 # THIS ONE USES .inject(:*) to multiply the elements
+# WAS THINKING ABOUT USING .inject
 def multiply_all_pairs(arr1, arr2)
   arr1.product(arr2).map { |subarr| subarr.inject(:*) }.sort
 end
