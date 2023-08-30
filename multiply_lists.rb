@@ -17,11 +17,8 @@ def multiply_list(array1, array2)
   end
   result
 end
-
-
-
-
-
+=end
+#=begin
 # OLDER CODE REFERENCE
 def interleave(array1, array2)
   result = []
@@ -32,3 +29,25 @@ def interleave(array1, array2)
 end
 In our solution, we use .each_with_index to get values and index numbers for array1, 
 then use the index number to access the corresponding element in array2.
+=end
+#=begin THEIR CODE (EXACTLY THE SAME!!)
+def multiply_list(list_1, list_2)
+  products = []
+  list_1.each_with_index do |item, index|
+    products << item * list_2[index]
+  end
+  products
+end
+
+We take a direct approach, and simply iterate an index into both Arrays, 
+appending each product to the products Array.
+=end
+#=begin FE
+The Array.zip method can be used to produce an extremely compact solution to this method. 
+Read the documentation for zip, 
+and see if you can come up with a one line solution (not counting the def and end lines).
+# I THOUGHT TO DO THIS FIRST AND COULDN'T FIGURE IT OUT
+def interleave(array1, array2)
+  array1.zip(array2) {|x| x * array2[index]}
+end
+# IT WORKS, I JUST WINGED IT!
