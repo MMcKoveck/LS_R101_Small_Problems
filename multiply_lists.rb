@@ -47,7 +47,7 @@ The Array.zip method can be used to produce an extremely compact solution to thi
 Read the documentation for zip, 
 and see if you can come up with a one line solution (not counting the def and end lines).
 # I THOUGHT TO DO THIS FIRST AND COULDN'T FIGURE IT OUT
-def interleave(array1, array2)
+def multiply_list(array1, array2)
   array1.zip(array2) {|x| x * array2[index]}
 end
 # IT WORKS, I JUST WINGED IT!
