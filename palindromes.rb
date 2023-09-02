@@ -41,11 +41,13 @@ maybe don't' split the string and just search from left to right.
 This would probably be perfect for regex.
 search for a character (even -) 
 then search from end to find something that matches
-star number of chars in between
+star(any) number of chars in between
 (temporarily remember the length of that string slice)
 search index +1 from first and -1 from last and check if they match
 if yes, do it again, if no, exit that part of loop
-if the size of the selected chars == the original distance, concat that to output array
+  (this works even if there is only one char in between)
+if the size of the selected chars == the original distance, 
+  concat original distance sized slice starting from where search started to output array
 move to the next char and do it all again
 stop everything when end of string is reached
 (string.length.times?)
