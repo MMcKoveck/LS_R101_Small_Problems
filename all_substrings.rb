@@ -94,3 +94,52 @@ def substrings(string)
   end
   result
 end
+#=begin THEIR CODE
+OOOOOOOHHHHHHHHH THEY MEANT TO KEEP THE leading_substrings METHOD INTACT AND USE IT!
+def substrings(string)
+  results = []
+  (0...string.size).each do |start_index|
+    this_substring = string[start_index..-1]
+    results.concat(leading_substrings(this_substring))
+  end
+  results
+end
+
+
+# THIS IS ME REFACTORED AND USING l_s  
+def leading_substrings(string)
+  result = []
+  string.length.times {|idx| result << string[0..idx]}
+  result
+end
+
+def substrings(string)
+  result = []
+  loop do
+    result << leading_substrings(string)
+    string.slice!(0)
+    break if string.length == 0
+  end
+  result.flatten(1)
+end
+# USING Array.concat INSTEAD OF << SO NO NEED TO FLATTEN!
+def substrings(string)
+  result = []
+  loop do
+    result.concat(leading_substrings(string))
+    string.slice!(0)
+    break if string.length == 0
+  end
+  result
+end
+
+# MINE RE RE REFACTORED WITHOUT SUB METHOD
+def substrings(string)
+  result = []
+  loop do
+    string.length.times {|idx| result << string[0..idx]}
+    string.slice!(0)
+    break if string.length == 0
+  end
+  result
+end
