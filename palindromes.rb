@@ -53,3 +53,43 @@ stop everything when end of string is reached
 (string.length.times?)
 return output array
 
+REVERSE!!
+so still start at index[0] and check string slices one char bigger until end of string
+(USE substrings method!)
+
+if string slice == string slice reverse 
+AND if string length > 1
+then put that slice in final array
+
+
+# USE THIS
+def substrings(string)
+  result = []
+  loop do
+    string.length.times {|idx| result << string[0..idx]}
+    string.slice!(0)
+    break if string.length == 0
+  end
+  result
+end
+# USE THIS
+
+
+def palindromes(string)
+  final = []
+  subs = []
+  p subs.concat(substrings(string))
+  final.concat(subs.map) if subs.map == subs.map.reverse_each
+  p final
+end
+#TRY THIS
+subs.map {|idx| final.concat(idx) if idx == idx.reverse}
+
+# THIS WORKS!!
+def palindromes(string)
+  final = []
+  subs = []
+  subs.concat(substrings(string))
+  subs.map {|idx| final << idx if idx == idx.reverse && idx.length > 1}
+  final
+end
