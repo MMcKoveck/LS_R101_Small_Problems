@@ -74,7 +74,8 @@ def substrings(string)
 end
 # USE THIS
 
-
+#=begin MY CODE
+=begin didn't work
 def palindromes(string)
   final = []
   subs = []
@@ -82,8 +83,9 @@ def palindromes(string)
   final.concat(subs.map) if subs.map == subs.map.reverse_each
   p final
 end
+=end
 #TRY THIS
-subs.map {|idx| final.concat(idx) if idx == idx.reverse}
+# subs.map {|idx| final.concat(idx) if idx == idx.reverse}
 
 # THIS WORKS!!
 def palindromes(string)
@@ -92,4 +94,62 @@ def palindromes(string)
   subs.concat(substrings(string))
   subs.map {|idx| final << idx if idx == idx.reverse && idx.length > 1}
   final
+end
+=end
+#=begin THEIR CODE
+def palindromes(string)
+  all_substrings = substrings(string)
+  results = []
+  all_substrings.each do |substring|
+    results << substring if palindrome?(substring)
+  end
+  results
+end
+
+def palindrome?(string)
+  string == string.reverse && string.size > 1
+end
+Again, this problem is much easier if you use the method from the previous exercise. 
+Building this method from scratch is sure to leave you with an aching head. (boy howdy)
+
+We'll' use a helper method here, palindrome?, to test whether any given string is a palindrome. 
+Note that we need to verify the size of the string as well as its reversibility.
+
+The main method just calls substrings from the previous exercise, 
+and then constructs a list of all of the return values that are palindromic.
+=end
+#=begin FE
+Can you modify this method (and/or its predecessors) to ignore non-alphanumeric characters and case? 
+  Alphanumeric characters are alphabetic characters(upper and lowercase) and digits.
+# FROM MITCH MILLS
+  string = string.downcase.gsub(/[^a-z0-9]/, '')
+
+irb(main):107:0> string = "Madam I'm Adam"
+=> "Madam I'm Adam"
+irb(main):108:0> p string = string.downcase.gsub(/[^a-z0-9]/, '')
+"madamimadam"
+=> "madamimadam"                                  
+irb(main):109:0> string = "Madam I'm Adam"
+=> "Madam I'm Adam"
+irb(main):110:0> p string = string.downcase.gsub(/[^a-z0-9' ']/, '')
+"madam i'm adam"
+=> "madam i'm adam" 
+irb(main):111:0> p string = string.downcase.gsub(/[^a-z0-9" "]/, '')
+"madam im adam"
+=> "madam im adam" 
+irb(main):114:0> p string = string.downcase.gsub(/[^a-z0-9 ]/, '') # USE THIS
+"madam im adam"
+=> "madam im adam"
+
+# MODIFIED substrings METHOD
+
+def substrings(string)
+  result = []
+  string = string.downcase.gsub(/[^a-z0-9 ]/, '')
+  loop do
+    string.length.times {|idx| result << string[0..idx]}
+    string.slice!(0)
+    break if string.length == 0
+  end
+  result
 end
