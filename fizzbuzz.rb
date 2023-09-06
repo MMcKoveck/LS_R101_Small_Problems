@@ -123,8 +123,7 @@ since there are no other lines after this case statement.
 =end
 # MY CODE WITH ', ' WORKS!!!
 def fizzbuzz(num1, num2)
-  array = (num1..num2)
-  fb = array.map {|idx| 
+  array = (num1..num2).map {|idx| 
     if idx % 3 == 0 && idx % 5 == 0
      'FizzBuzz'
     elsif idx % 3 == 0 
@@ -135,6 +134,6 @@ def fizzbuzz(num1, num2)
      idx
     end
     }
-    puts fb.join(', ')
+    puts array.join(', ')
 end
 =end
