@@ -44,3 +44,39 @@ def repeater(string)
   end
   dubs.join
 end
+=end
+#=begin THEIR CODE
+def repeater(string)
+  result = ''
+  string.each_char do |char|
+    result << char << char # HOW DO YOU KNOW TO DO THIS?!
+  end
+  result
+end
+
+This solution is straightforward. We initialize a result string, 
+then iterate through the original string while appending each character to the result 2 times.
+ Finally, we return the result string.
+# HOW DO YOU KNOW WHEN YOU CAN DO THAT!?!?!?!?
+#=begin CODY'S CODE
+def repeater(str)
+  str.chars.map { |char| char * 2}.join
+end
+
+def repeater(str)
+  str.split("").map { |char| char * 2}.join
+end
+
+def repeater(str)
+  str.chars.inject([]) { |result, x| result << x * 2}.join
+end
+
+def repeater(str)
+  str.chars.inject("") { |result, x| result << x * 2}
+end
+
+#Did not remember #zip. Thank you Mitch
+def repeater(str)
+  str.chars.zip(str.chars).join
+end
+=end # CODY'S' CODE
