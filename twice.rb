@@ -64,3 +64,25 @@ If we don't' pay attention to this case,
 we end up setting both left_side and right_side to string_number[0..-1], 
 which, in the case of a single character string, is equal to that character.
 =end
+#=begin MITCH MILLS''CODE
+# initial solution:
+def twice(num)
+  string = num.to_s
+  half = string.size / 2
+  string[...half] == string[half..] ? num : num * 2
+end
+
+# same approach, a little cleaner
+def twice(num)
+  array = num.to_s.chars
+  half = array.size / 2
+  array.take(half) == array.drop(half) ? num : num * 2
+end
+
+# another approach:
+def twice(num)
+  string = num.to_s
+  half = (string.size / 2.0).ceil
+  half.times.all? { |idx| string[idx] == string[idx + half] } ? num : num * 2
+end
+=end
