@@ -72,7 +72,16 @@ How would you handle this if there was a possibility of
 extra credit grades causing it to exceed 100 points?
 
 I would either make anything over 90 be 'A' 
-when 90..1000 then 'A'
+using my code:
+    when number >= 90
+      'A'
+using their code:      
+when 90.. then 'A'
+
 or
 make a new case where anything over 100 would be 'A+'
-when 101..1000 then 'A+'
+using my code:
+    when number > 100
+      'A+'
+using their code:
+when 101.. then 'A+'
