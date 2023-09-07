@@ -26,11 +26,18 @@ def word_lengths(string)
   idx and idx.length
   maybe if sep elements, join every 2 zip?
   maybe can just zip idx and idx.length
-
+  maybe just interpolate the 2 
 =end
 #=begin my code WORKS
 def word_lengths(string)
   array = string.split
   array.map {|idx| idx + ' ' + idx.length.to_s}
 end
+=end
+#=begin THEIR CODE WAS THE SAME
+# INTERPOLATION WORKS TOO!!
+def word_lengths(string)
+  string.split.map { |word| "#{word} #{word.length}" }
+end
+# YOU CAN CREATE THE ARRAY USING .map ON THE STRING THEN INTERPOLATE THE 2
 =end
