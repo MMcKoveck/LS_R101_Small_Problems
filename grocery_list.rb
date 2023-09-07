@@ -108,3 +108,10 @@ def buy_fruit(arr)
 end
 # .first AND .last ARE AWESOME!!
 =end
+
+# FTR DOES NOT NEED EXTRA ()
+def buy_fruit(array) 
+  list = []
+  array.each {|x| x[1].times{list << x[0]} } 
+  list 
+end
