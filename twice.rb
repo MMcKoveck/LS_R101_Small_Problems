@@ -16,6 +16,7 @@ twice(103103) == 103103
 twice(3333) == 3333
 twice(7676) == 7676
 twice(123_456_789_123_456_789) == 123_456_789_123_456_789
+? twice(123456789123456789) == 123456789123456789
 twice(5) == 10
 =end
 Note: underscores are used for clarity above. Ruby lets you use underscores when writing long numbers; 
@@ -23,6 +24,18 @@ however, it does not print the underscores when printing long numbers.
 Don't be alarmed if you don't see the underscores when running your tests.
 #=begin PEDAC
 def twice(num)
+  #loop
 check num % 2 == 0
-1st half == 2nd half 
+1st half == 2nd half convert to string and compare
 return num : num * 2
+
+=end
+#=begin MY CODE WORKS!
+  
+  # return num * 2 if num % 2 != 0
+  
+def twice(num)
+  half = num.to_s.length / 2
+  return num * 2 if num.to_s.length % 2 != 0
+  num.to_s[0..(half-1)] == num.to_s[(-half)..-1] ? num : num * 2
+end
