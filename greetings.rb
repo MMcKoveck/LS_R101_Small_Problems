@@ -33,7 +33,7 @@ and allow the method to return it automatically.
 =end
 
 #=begin FE
-This method doesn't' actually pass rubocop! https://rubocop.org
+This method doesn't' actually pass rubocop! https://rubocop.org #INSTALLED IN VS CODE - NOT WORKING
 What is the best way to shorten the lines in this method so it 
 doesn't' exceed the 80 maximum characters to a line?
 
