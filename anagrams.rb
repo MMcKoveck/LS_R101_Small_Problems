@@ -94,3 +94,57 @@ end
 words =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
           'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
           'flow', 'neon']
+
+# CLEAN THIS UP!!! IT WORKS!
+def anagrams(array)
+  groups = []
+  word1 = 0
+  word2 = 1
+  loop do 
+    groups << []
+    groups[-1] << array[word1]
+    loop do
+      if array[word1].split('').sort == array[word2].split('').sort
+        groups[-1] << array.delete(array[word2]) 
+        word2 = 1 #this is probably wrong - makes more steps
+      else 
+        word2 += 1
+      end
+      break if word2 == array.length
+    end 
+    array.shift
+    word1 = 0
+    word2 = 1
+    break if array.length == 0
+  end
+  groups.each {|x| p x.sort}
+end
+
+# MAYBE MAKE COMPARISON INTO A HELPER METHOD
+def value(word)
+  word.split('').sort.join
+end
+
+def value_match?(wordA, wordB)
+  value(wordA) == value(wordB) ? wordB : "x"
+end
+def anagrams(array)
+  groups = []
+  #loop do
+    #groups << []
+    #?# groups[-1] << array[0]
+    loop do
+      p check = array[0]
+      groups[-1] << array.map {|x| value_match?(check, x)}
+      p groups
+      groups.flatten!(2).compact!
+      p groups
+      array.delete(array.map {|x| value_match?(check, x)})
+      array.shift
+      p array
+      break if array.length == 0
+    end
+  #end
+    groups.each {|x| p x.sort}
+end
+# I GIVE UP THIS IS TAKING TOO LONG
