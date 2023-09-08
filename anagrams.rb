@@ -148,3 +148,65 @@ def anagrams(array)
     groups.each {|x| p x.sort}
 end
 # I GIVE UP THIS IS TAKING TOO LONG
+#=begin THEIR CODE
+# Looks like it was a Hash. I considered using a hash.. Oh well.
+
+result = {}
+
+words.each do |word|
+  key = word.split('').sort.join
+  if result.has_key?(key)
+    result[key].push(word)
+  else
+    result[key] = [word]
+  end
+end
+
+result.each_value do |v|
+  puts "------"
+  p v
+end
+
+The trickiest part of this problem is figuring out how to check if two words are anagrams. 
+Since anagrams are two words which contain exact same letters, but in different order, 
+if we sort each anagram word, values should be the same. For example:
+
+dome and mode are anagrams because when we sort both of them we get demo.
+
+Now that we know how to find anagrams, 
+we can use a hash to store the sorted version of the word as the key in the hash 
+and its value will be an array of all anagrams of that word.
+
+Translating this to code...we first initialize a hash result.
+
+Then, we iterate over the words array and in each iteration:
+
+We check if the sorted version of the word is already in the hash. 
+If it is we add it to the value array.
+If the sorted version is not in the hash we add it to the hash 
+and the initial value of that key is just the array with that word in it.
+In the end we print the values in the result hash.
+
+=end
+#=begin RICH'S' CODE (UGH!)
+def anagrams(words)
+  words.group_by { |word| word.chars.sort.join }.values
+end
+=end
+#=begin RICH'S' TWEAKED
+def anagrams(array)
+  groups = array.group_by { |word| word.chars.sort.join }.values
+  groups.each {|x| p x.sort}
+end
+array.group_by makes a hash from the array and .values is returning the values of that hash.
+they are being assigned to the variable groups as an array of arrays.
+without using .values, groups would contain this entire hash:
+=> {"demo"=>["demo", "dome", "mode"], 
+    "enno"=>["none", "neon"], 
+    "deit"=>["tied", "diet", "edit", "tide"], 
+    "eilv"=>["evil", "live", "veil", "vile"], 
+    "flow"=>["fowl", "wolf", "flow"]}
+instead it's' just an array of the keys, which are themselves arrays of strings that
+match when .sort ed by .char acter and are re .join ed.    
+
+each element (sub array) of group then needs to be alphabetically sorted and printed
