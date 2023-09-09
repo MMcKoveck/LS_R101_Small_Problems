@@ -26,9 +26,14 @@ end
 def rotate_array(array)
   switch = []
   switch << array[-1] << array[1..-2] << array[0]
-  switch
+  switch.flatten
 end
-
+# EACH THING PUSHED WITH << IS SEPARATE IN THE MAIN ARRAY
+# SO WITHOUT FLATTEN IT GOES FROM
+[1, 2, 3, 4, 5]    to 
+[5, [2, 3, 4], 1] 
+# BUT IT NEEDS TO BE 
+[5, 2, 3, 4, 1]
 # TRY AGAIN!! OK THIS WORKS
 def rotate_array(array)
   switch = []
