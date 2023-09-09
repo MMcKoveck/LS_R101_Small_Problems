@@ -35,4 +35,37 @@ def rotate_array(array)
   switch << array[1..-1] << array[0]
   switch.flatten
 end
+# TOO MANY STEPS REALLY. 
+=end # MY CODE
+#=begin THEIR CODE 
+# THIS IS NICE, JUST CALL AND CONCAT THE ELEMENTS!!
+def rotate_array(array)
+  array[1..-1] + [array[0]]
+end
+There are multiple ways to solve this, but we show just one.
+
+Our solution simply slices everything out of the array except the first element, 
+then appends the original first element to the end. Note that we must be careful to not mutate array.
+=end
+#=begin FE
+Write a method that rotates a string instead of an array. Do the same thing for integers. 
+You may use rotate_array from inside your new method.
+
+#=begin ERIC QIAN''S CODE
+def rotate_array(arr)
+  ret_arr = Array.new(arr)
+  ret_arr.shift
+  ret_arr.push(arr[0])
+end
+
+#Further Exploration
+def rotate_string(str)
+  str[1..-1] + str[0]
+end
+
+def rotate_integer(int)
+  rotate_string(int.to_s).to_i
+end
+=end
+
 
